@@ -21,8 +21,8 @@
 	Google Api Account(Client Id and Secret)-Optional
 	
 	Below Folders Need To Be Created
-	1. YOUR_LOCAL_PATH_TO_SAVE_EMOJIS : All Emojis(Ex:75, saved as numbers starting from 1)
-	2. YOUR_LOCAL_PATH_TO_SAVE_TICEKTS
+	1. <YOUR_LOCAL_PATH_TO_SAVE_EMOJIS> : All Emojis(Ex:75, save as numbers starting from 1)
+	2. <YOUR_LOCAL_PATH_TO_SAVE_TICEKTS>
 
 <b>Run the Application</b>
 	
