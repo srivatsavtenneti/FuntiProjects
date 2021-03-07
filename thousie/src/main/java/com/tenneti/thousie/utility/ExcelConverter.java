@@ -30,9 +30,9 @@ import com.tenneti.thousie.model.RandomHousieObject;
 
 public class ExcelConverter {
 
-	private static String FILE_DIR = "<YOUR_LOCAL_PATH_TO_SAVE_TICEKTS>";
+	private static String FILE_DIR = "C:\\Users\\nowdu\\workspace\\Funti Housie Backend\\Assets\\ExcelTickets\\";
 	private static String FILE_EXT = ".xlsx";
-	private static String EMOJI_FILE_DIR = "<YOUR_LOCAL_PATH_TO_SAVE_EMOJIS>";
+	private static String EMOJI_FILE_DIR = "C:\\Users\\nowdu\\workspace\\Funti Housie Backend\\Assets\\Emojis\\";
 	private static String EMOJI_FILE_EXT = ".png";
 
 	ExcelToImageConverter imageConverter = new ExcelToImageConverter();
@@ -247,11 +247,11 @@ public class ExcelConverter {
 		} else if(count == 4) {
 			font.setFontHeightInPoints((short)26);
 		} else {
-			 font.setFontHeightInPoints((short)30);
+			 font.setFontHeightInPoints((short)26);
 		}
 	   
 	    font.setFontName("Comic Sans MS");
-	    font.setColor(IndexedColors.ORANGE.getIndex());
+	    font.setColor(IndexedColors.DARK_RED.getIndex());
 	    font.setBold(true);
 	    font.setBoldweight(Font.BOLDWEIGHT_BOLD);
 	    font.setItalic(false);
@@ -268,7 +268,7 @@ public class ExcelConverter {
 		} else if(count == 4) {
 			font.setFontHeightInPoints((short)24);
 		} else {
-			 font.setFontHeightInPoints((short)28);
+			 font.setFontHeightInPoints((short)26);
 		}
 	   
 	    font.setFontName("Comic Sans MS");
@@ -282,12 +282,11 @@ public class ExcelConverter {
 	
 	private short getRandomcolorIndex() {
 		List<Short> colorIndexes = new ArrayList<Short>();
-		colorIndexes.add(IndexedColors.LAVENDER.getIndex());
-		colorIndexes.add(IndexedColors.GREEN.getIndex());
-		colorIndexes.add(IndexedColors.GOLD.getIndex());
+		colorIndexes.add(IndexedColors.WHITE.getIndex());
+		colorIndexes.add(IndexedColors.LIGHT_YELLOW.getIndex());
+		colorIndexes.add(IndexedColors.SKY_BLUE.getIndex());
 		colorIndexes.add(IndexedColors.GREY_25_PERCENT.getIndex());
-		colorIndexes.add(IndexedColors.TAN.getIndex());
-		colorIndexes.add(IndexedColors.LIGHT_TURQUOISE.getIndex());
+		colorIndexes.add(IndexedColors.LEMON_CHIFFON.getIndex());
 		
 		Random random = new Random();
 		int index = random.nextInt(colorIndexes.size());

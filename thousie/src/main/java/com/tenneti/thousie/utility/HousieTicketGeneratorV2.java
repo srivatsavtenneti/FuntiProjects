@@ -80,13 +80,17 @@ public class HousieTicketGeneratorV2 {
 			int colSum = singleColSum;
 			while(colSum > range) {	
 				if(threeColumn.size() > 0) {
-					colList.get(threeColumn.get(k))[i] = colList.get(threeColumn.get(k))[i] -1;
-					adjustColumnCount(colList.get(threeColumn.get(k)),i, colList);
+					int mcol = adjustColumnCount(colList.get(threeColumn.get(k)),i, colList);
+					if(mcol != 10) {
+						colList.get(threeColumn.get(k))[i] = colList.get(threeColumn.get(k))[i] - 1;
+					}
 					threeColumn.remove(threeColumn.get(k));
 					colSum = getColSum(colList, i);
 				} else {
-					colList.get(twoColumn.get(twoCount))[i] = colList.get(twoColumn.get(twoCount))[i] -1;
-					adjustColumnCount(colList.get(twoColumn.get(twoCount)), i, colList);
+					int col = adjustColumnCount(colList.get(twoColumn.get(twoCount)), i, colList);
+					if(col != 10) {
+						colList.get(twoColumn.get(twoCount))[i] = colList.get(twoColumn.get(twoCount))[i] - 1;
+					}
 					twoColumn.remove(twoColumn.get(twoCount));
 					colSum = getColSum(colList, i);
 				}		
@@ -118,7 +122,7 @@ public class HousieTicketGeneratorV2 {
 					sum = 10;
 				}
 				
-				if (getColSum(colList, i) < sum && i != currentCol) {
+				if (getColSum(colList, i) < sum && i != currentCol && columnCounts[i] == 1) {
 					columnCounts[i] = columnCounts[i] + 1;
 					index = i;
 					break;
@@ -136,7 +140,7 @@ public class HousieTicketGeneratorV2 {
 					sum = 10;
 				}
 				colSum = getColSum(colList, i);
-				if(colSum < sum && columnCounts.length < 15) {
+				if(colSum < sum && columnCounts.length < 15 && columnCounts[i] == 1) {
 					columnCounts[i] = columnCounts[i] + 1;
 					break;
 				}

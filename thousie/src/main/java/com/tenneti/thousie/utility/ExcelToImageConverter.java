@@ -8,7 +8,7 @@ import com.aspose.cells.Worksheet;
 
 public class ExcelToImageConverter {
 
-	private static String FILE_DIR = "<YOUR_LOCAL_PATH_TO_SAVE_TICEKTS>";
+	private static String FILE_DIR = "C:\\Users\\nowdu\\workspace\\Funti Housie Backend\\Assets\\ImageTickets\\";
 	private static String FILE_EXT = ".png";
 
 	public String convertToImage(String pathName, String name) {

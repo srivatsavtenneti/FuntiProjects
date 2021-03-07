@@ -120,7 +120,7 @@ public class TicketService {
 					int imageNo = 0;
 					do {
 						//NOTE: 76 is IF YOU HAVE 75 EMOJIs
-						imageNo = random.nextInt(76);
+						imageNo = random.nextInt(101);
 					} while(cacheList.contains(imageNo+1));
 					redisTemplate.opsForList().rightPush("emojiList", imageNo+1);
 				}
@@ -139,7 +139,7 @@ public class TicketService {
 		
 		List<Integer> imageList = new ArrayList<Integer>();
 		//NOTE: 76 is IF YOU HAVE 75 EMOJIs
-		for(int i=1; i<76; i++) {
+		for(int i=1; i<101; i++) {
 			imageList.add(i);
 		}
 		
