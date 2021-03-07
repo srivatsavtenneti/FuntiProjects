@@ -1,3 +1,19 @@
 server:
   servlet:
     context-path: /funtiHousie
+    
+spring:
+    mail:
+        host:
+        password:
+        port: 587
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    connectiontimeout: 5000
+                    starttls:
+                        enable: true
+                    timeout: 5000
+                    writetimeout: 5000
+        username:

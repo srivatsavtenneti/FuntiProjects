@@ -1,9 +1,12 @@
 package com.tenneti.thousie.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -22,6 +25,9 @@ public class TicketService {
 	SMSService smsService;
 	
 	@Autowired
+	MailSenderService mailService;
+	
+	@Autowired
 	RedisTemplate redisTemplate;
 	
 	TicketUniqueGenerator uniqueGenerator = new TicketUniqueGenerator();
@@ -29,7 +35,7 @@ public class TicketService {
 	ExcelConverter excelConverter = new ExcelConverter();
 	ImgBBPhotoUpload imgUpload = new ImgBBPhotoUpload();
 	
-	public void generateTickets(List<Player> players) {
+	public void generateTickets(List<Player> players) throws MessagingException, IOException {
 		int totalTickets = 0;
 		int sixSets = 0;
 		int balanceTickets = 0;
@@ -91,7 +97,7 @@ public class TicketService {
 		return uniqueTickets;
 	}
 	
-	private void sendTickets(List<int[][]> playerTickets, Player player, List<Integer> imageList, List<String> randomHousieText) {
+	private void sendTickets(List<int[][]> playerTickets, Player player, List<Integer> imageList, List<String> randomHousieText) throws MessagingException, IOException {
 		String path = excelConverter.converToExcel(playerTickets, player.getName(), player.getNumTickets(), imageList, randomHousieText);
 		String url = null;
 		String ticketText = "టిక్కెట్టు";
@@ -105,7 +111,8 @@ public class TicketService {
 		if(player.getNumTickets() > 1) {
 			ticketText = " టిక్కెట్లు";
 		}
-		smsService.sendSMS(player.getPhone(), player.getName() + ", ఇదిగో  మీ " + ticketText, url);
+		mailService.sendEmailWithAttachment();
+//		smsService.sendSMS(player.getPhone(), player.getName() + ", ఇదిగో  మీ " + ticketText, url);
 	}
 	
 	private List<Integer> getEmojiListFromCache(int totalTickets) {
